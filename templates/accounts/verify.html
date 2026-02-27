@@ -1,5 +1,35 @@
-<h2>Verify Your Identity</h2>
-<p>We've sent a 6-digit code to your email.</p>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Verify OTP</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+                text-align: center;
+                font-size: medium;
+                /* background-color: #07a5c8; */
+            }
+
+            .header {
+                background-color: #100761;
+                color: white;
+                padding: 15px;
+                text-align: center;
+                font-weight: bold;
+                border-top-left-radius: 30px;
+                border-bottom-right-radius: 30px;
+                margin-top: 20px;
+                margin-right: 20%;
+                margin-left: 20%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Verify Your Identity</h1>
+        </div>
+        <p>We've sent a 6-digit code to your email.</p>
 <form method="POST">
     {% csrf_token %}
     <div style="margin-bottom: 10px;">
@@ -11,3 +41,5 @@
 {% if error %}
     <p style="color: red; margin-top: 10px;">{{ error }}</p>
 {% endif %}
+    </body>
+</html>
