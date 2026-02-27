@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #100761;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            position: relative;
+        }
+
+        .logout_button {
+            position: absolute;
+            top: 35px;
+            right: 30px;
+        }
+
+        .logout_button button {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .logout_button button:hover {
+            background-color: #cc0000;
+        }
+
+        .body {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Cyber World</h1>
+        <div class="logout_button">
+            <button onclick="window.location.href='/admin/logout/'">Logout</button>
+        </div>
+    </div>
+
+    <div class="body">
+        <p>Welcome to cyber world, <strong>{{ user.username }}</strong>!!</p>
+    </div>
+
+    <script>
+        console.log("Dashboard loaded");
+    </script>
+
+</body>
+</html>
