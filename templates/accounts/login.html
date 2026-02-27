@@ -2,19 +2,39 @@
 <html>
 <head>
     <title>Login</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #100761;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 </html>
 <body>
+    <div class="header">
+        <h1>Login</h1>
+    </div>
 <h2>Login</h2>
 <form method="POST">
     {% csrf_token %}
-    <div style="margin-bottom: 10px;">
+    <div style="margin-bottom: 10px; display: flex; flex-direction: column; align-items: center;">
         <input type="text" name="username" placeholder="Username" required style="padding: 8px;">
     </div>
-    <div style="margin-bottom: 10px;">
+    <div style="margin-bottom: 10px; display: flex; flex-direction: column; align-items: center;">
         <input type="password" name="password" placeholder="Password" required style="padding: 8px;">
     </div>
-    <button type="submit" style="padding: 10px 20px; cursor: pointer;">Send OTP to Email</button>
+    <button type="submit" style="padding: 10px 20px; cursor: pointer; display: flex; flex-direction: column; align-items: center;">Send OTP to Email</button>
 </form>
 </body>
 </html>
