@@ -1,73 +1,173 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber World | Dashboard</title>
     <style>
+        :root {
+            --primary-bg: #0a0b1e;
+            --accent-blue: #00d2ff;
+            --accent-purple: #9d50bb;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --text-color: #e0e0e0;
+        }
+
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: radial-gradient(circle at center, #1a1b3a 0%, #0a0b1e 100%);
+            color: var(--text-color);
+            min-height: 100vh;
         }
 
+        /* Header with Glassmorphism */
         .header {
-            background-color: #100761;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-weight: bold;
-            border-bottom-left-radius: 30px;
-            border-bottom-right-radius: 30px;
-            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
 
-        .logout_button {
-            position: absolute;
-            top: 35px;
-            right: 30px;
+        .header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
         }
 
         .logout_button button {
-            background-color: #ff4d4d;
+            background: linear-gradient(45deg, #ff4d4d, #b30000);
             color: white;
             border: none;
-            padding: 8px 16px;
+            padding: 10px 20px;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 50px;
             font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .logout_button button:hover {
-            background-color: #cc0000;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
         }
 
-        .body {
-            padding: 20px;
-            text-align: center;
-            font-size: medium;
-            border-top-right-radius: 30px;
-            border-top-left-radius: 30px;
-            background-color: #079ee3;
-            padding-top: 20px;
-            margin-top: 10px;
+        /* Main Content Container */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
 
+        .welcome-card {
+            background: var(--glass-bg);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 30px;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+
+        /* Dashboard Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--accent-blue);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .card h3 { color: var(--accent-blue); margin-top: 0; }
+
+        /* Media / Video Section */
+        .media-box {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 15px;
+            border: 1px solid #333;
+        }
+
+        video, img {
+            width: 100%;
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
-    <div class="header">
+    <header class="header">
         <h1>Cyber World</h1>
         <div class="logout_button">
-            <button onclick="window.location.href='/admin/logout/'">Logout</button>
+            <button onclick="window.location.href='/admin/logout/'">Terminal Exit</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="welcome-card">
+            <h2>System Access Granted</h2>
+            <p>Welcome back, <span style="color: var(--accent-blue); font-weight: bold;">{{ user.username }}</span>. All systems are operational.</p>
+        </div>
+
+        <div class="dashboard-grid">
+            
+            <div class="card">
+                <h3>Live Network Feed</h3>
+                <div class="media-box">
+                    <video autoplay muted loop poster="https://via.placeholder.com/400x225/111/eee?text=Loading+Stream...">
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-blue-data-clouds-4419-large.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">Status: Encrypted Stream Active</p>
+            </div>
+
+            <div class="card">
+                <h3>System Status</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 10px;">🛡️ Firewall: <span style="color: #00ff00;">Active</span></li>
+                    <li style="margin-bottom: 10px;">🌐 VPN: <span style="color: #00ff00;">Connected</span></li>
+                    <li style="margin-bottom: 10px;">⚡ Latency: <span style="color: var(--accent-blue);">24ms</span></li>
+                </ul>
+                <img src="https://via.placeholder.com/400x150/222/00d2ff?text=Data+Visualization" alt="Graph" style="border-radius: 5px; margin-top: 10px;">
+            </div>
+
+            <div class="card">
+                <h3>Recent Alerts</h3>
+                <p>⚠️ Unauthorized ping detected from Port 8080.</p>
+                <hr style="border: 0; border-top: 1px solid #333;">
+                <p>✅ System update v2.4.0 applied successfully.</p>
+            </div>
+
         </div>
     </div>
 
-    <div class="body">
-        <p>Welcome to cyber world, <strong>{{ user.username }}</strong>!!</p>
-    </div>
-
     <script>
-        console.log("Dashboard loaded");
+        console.log("Cyber World Neural Link Established...");
     </script>
-
 </body>
 </html>
