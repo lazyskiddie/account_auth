@@ -20,49 +20,52 @@
             background: radial-gradient(circle at center, #1a1b3a 0%, #0a0b1e 100%);
             color: var(--text-color);
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* Header with Glassmorphism */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 5%;
             background: var(--glass-bg);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
         }
 
         .header h1 {
             margin: 0;
             font-size: 1.8rem;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
         }
 
         .logout_button button {
             background: linear-gradient(45deg, #ff4d4d, #b30000);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 10px 25px;
             cursor: pointer;
             border-radius: 50px;
             font-weight: bold;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 77, 77, 0.2);
         }
 
         .logout_button button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 77, 77, 0.5);
         }
 
-        /* Main Content Container */
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 40px auto;
             padding: 0 20px;
         }
@@ -70,52 +73,119 @@
         .welcome-card {
             background: var(--glass-bg);
             padding: 30px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 30px;
-            text-align: center;
-            animation: fadeIn 1s ease-in;
+            display: flex; 
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            animation: fadeIn 0.8s ease-out;
         }
 
-        /* Dashboard Grid */
         .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+            animation: fadeIn 1.2s ease-out;
         }
 
+        /* Card Styling */
         .card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: 0.3s;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .card:hover {
             border-color: var(--accent-blue);
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.07);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
 
-        .card h3 { color: var(--accent-blue); margin-top: 0; }
+        .card h3 { 
+            color: var(--accent-blue); 
+            margin-top: 0; 
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-        /* Media / Video Section */
         .media-box {
+            position: relative;
             width: 100%;
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
-            margin-top: 15px;
-            border: 1px solid #333;
+            margin-top: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #000;
         }
 
-        video, img {
+        video {
             width: 100%;
             display: block;
+            filter: brightness(0.9) contrast(1.1);
+        }
+
+        .media-box::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+            background-size: 100% 3px, 3px 100%;
+            pointer-events: none;
+        }
+
+        .welcome-video-container {
+            flex: 1; 
+            max-width: 450px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid var(--accent-blue);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
+            position: relative;
+        }
+
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 210, 255, 0.3);
+            position: absolute;
+            top: 0;
+            z-index: 2;
+            animation: scan 4s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+
+        .status-text {
+            font-size: 0.85rem; 
+            color: #aaa; 
+            margin-top: 20px; 
+            border-left: 3px solid var(--accent-blue); 
+            padding-left: 12px;
+            font-family: 'Courier New', Courier, monospace;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .dashboard-grid { grid-template-columns: 1fr; }
+            .welcome-card { margin-right: 0; }
         }
     </style>
 </head>
@@ -124,50 +194,65 @@
     <header class="header">
         <h1>Cyber World</h1>
         <div class="logout_button">
-            <button onclick="window.location.href='/admin/logout/'">Terminal Exit</button>
+            <button onclick="window.location.href='/admin/logout/'">DISCONNECT</button>
         </div>
     </header>
 
     <div class="container">
         <div class="welcome-card">
-            <h2>System Access Granted</h2>
-            <p>Welcome back, <span style="color: var(--accent-blue); font-weight: bold;">{{ user.username }}</span>. All systems are operational.</p>
+            <div class="welcome-text">
+                <h2 style="margin-top:0; font-size: 2rem;">Access Granted</h2>
+                <p style="font-size: 1.2rem;">
+                    Welcome to the core, 
+                    <span style="color: var(--accent-blue); font-weight: bold;">{{ user.username }}</span>. 
+                    Your neural link is stable.
+                </p>
+            </div>
+
+            <div class="welcome-video-container">
+                <video autoplay muted loop playsinline>
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-blue-data-clouds-4419-large.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
         </div>
 
         <div class="dashboard-grid">
             
             <div class="card">
-                <h3>Live Network Feed</h3>
+                <h3>System Matrix Feed</h3>
                 <div class="media-box">
-                    <video autoplay muted loop poster="https://via.placeholder.com/400x225/111/eee?text=Loading+Stream...">
+                    <div class="scanline"></div>
+                    <video autoplay muted loop playsinline>
                         <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-blue-data-clouds-4419-large.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
                     </video>
                 </div>
-                <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">Status: Encrypted Stream Active</p>
+                <p class="status-text">
+                    SOURCE: LOCAL_NODE_01 <br>
+                    STATUS: <span style="color: #00ff00;">ENCRYPTED_STREAM_ACTIVE</span>
+                </p>
             </div>
 
             <div class="card">
-                <h3>System Status</h3>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 10px;">🛡️ Firewall: <span style="color: #00ff00;">Active</span></li>
-                    <li style="margin-bottom: 10px;">🌐 VPN: <span style="color: #00ff00;">Connected</span></li>
-                    <li style="margin-bottom: 10px;">⚡ Latency: <span style="color: var(--accent-blue);">24ms</span></li>
-                </ul>
-                <img src="https://via.placeholder.com/400x150/222/00d2ff?text=Data+Visualization" alt="Graph" style="border-radius: 5px; margin-top: 10px;">
-            </div>
-
-            <div class="card">
-                <h3>Recent Alerts</h3>
-                <p>⚠️ Unauthorized ping detected from Port 8080.</p>
-                <hr style="border: 0; border-top: 1px solid #333;">
-                <p>✅ System update v2.4.0 applied successfully.</p>
+                <h3>Global Traffic Map</h3>
+                <div class="media-box">
+                    <div class="scanline"></div>
+                    <video autoplay muted loop playsinline>
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-circuit-board-animation-1559-large.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <p class="status-text" style="border-left-color: var(--accent-purple);">
+                    SOURCE: SAT_LINK_99 <br>
+                    STATUS: <span style="color: var(--accent-blue);">SYNC_COMPLETE</span>
+                </p>
             </div>
 
         </div>
     </div>
 
     <script>
-        console.log("Cyber World Neural Link Established...");
+        console.log("Cyber World Neural Link Established. All systems green.");
     </script>
 </body>
 </html>
