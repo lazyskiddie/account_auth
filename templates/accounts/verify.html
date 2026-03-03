@@ -33,6 +33,12 @@
                 margin-top: 20px;
                 align-items: center;
                 box-shadow: #13132d 0px 10px 20px -10px;
+                border-radius: 5px;
+            }
+            .item3 {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                padding: 8px;
             }
         </style>
     </head>
@@ -46,8 +52,8 @@
         <div class="item2">
             <form method="POST">
                 {% csrf_token %}
-                <div style="margin-bottom: 10px;">
-                    <input type="text" name="otp" placeholder="Enter 6-digit OTP" maxlength="6" required style="padding: 8px; letter-spacing: 2px;">
+                <div class="item3">
+                    <input type="text" name="otp" placeholder="Enter 6-digit OTP" maxlength="6" required style="width: 200px; height: 25px; letter-spacing: 4px;">
                 </div>
                 <button type="submit" style="padding: 10px 20px; background-color: #8328a7; color: white; border: none; cursor: pointer;">Verify & Login</button>
             </form>
