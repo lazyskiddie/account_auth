@@ -8,6 +8,7 @@
                 font-family: Arial, sans-serif;
                 text-align: center;
                 font-size: medium;
+                align-items: center;
                 /* background-color: #07a5c8; */
             }
 
@@ -19,9 +20,19 @@
                 font-weight: bold;
                 border-top-left-radius: 30px;
                 border-bottom-right-radius: 30px;
-                margin-top: 20px;
+                margin-top: 90px;
                 margin-right: 20%;
                 margin-left: 20%;
+                box-shadow: #100761 0px 10px 20px -10px;
+            }
+            .item {
+                font-size: large;
+                margin-top: 40px;
+            }
+            .item2 button {
+                margin-top: 20px;
+                align-items: center;
+                box-shadow: #13132d 0px 10px 20px -10px;
             }
         </style>
     </head>
@@ -29,17 +40,20 @@
         <div class="header">
             <h1>Verify Your Identity</h1>
         </div>
-        <p>We've sent a 6-digit code to your email.</p>
-<form method="POST">
-    {% csrf_token %}
-    <div style="margin-bottom: 10px;">
-        <input type="text" name="otp" placeholder="Enter 6-digit OTP" maxlength="6" required style="padding: 8px; letter-spacing: 2px;">
-    </div>
-    <button type="submit" style="padding: 10px 20px; background-color: #28a745; color: white; border: none; cursor: pointer;">Verify & Login</button>
-</form>
-
-{% if error %}
-    <p style="color: red; margin-top: 10px;">{{ error }}</p>
-{% endif %}
+        <div class="item">
+            <p>We've sent a 6-digit code to your email.</p>
+        </div>
+        <div class="item2">
+            <form method="POST">
+                {% csrf_token %}
+                <div style="margin-bottom: 10px;">
+                    <input type="text" name="otp" placeholder="Enter 6-digit OTP" maxlength="6" required style="padding: 8px; letter-spacing: 2px;">
+                </div>
+                <button type="submit" style="padding: 10px 20px; background-color: #8328a7; color: white; border: none; cursor: pointer;">Verify & Login</button>
+            </form>
+        </div>
+        {% if error %}
+            <p style="color: red; margin-top: 10px;">{{ error }}</p>
+        {% endif %}
     </body>
 </html>
