@@ -1,51 +1,84 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Login</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #07a5c8;
-        }
+    <head>
+        <title>Login</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+                text-align: center;
+            }
 
-        .header {
-            background-color: #100761;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-weight: bold;
-            border-top-left-radius: 30px;
-            border-bottom-right-radius: 30px;
-            margin-top: 20px;
-            margin-right: 20%;
-            margin-left: 20%;
-        }
+            .header {
+                background-color: #100761;
+                color: white;
+                padding: 15px;
+                text-align: center;
+                font-weight: bold;
+                border-top-left-radius: 30px;
+                border-bottom-right-radius: 30px;
+                margin-top: 90px;
+                margin-right: 25%;
+                margin-left: 25%;
+                box-shadow: #100761 0px 10px 20px -10px;
+            }
 
-        .form-container {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-    </style>
-</head>
-</html>
-<body>
-    <div class="header">
-        <h1>Login</h1>
-    </div>
+            .form-container {
+                margin-top: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
 
-<form method="POST">
-    {% csrf_token %}
-    <div style="margin-bottom: 10px; display: flex; flex-direction: column; align-items: center;">
-        <input type="text" name="username" placeholder="Username" required style="padding: 8px;">
-    </div>
-    <div style="margin-bottom: 10px; display: flex; flex-direction: column; align-items: center;">
-        <input type="password" name="password" placeholder="Password" required style="padding: 8px;">
-    </div>
-    <button type="submit" style="padding: 10px 20px; cursor: pointer; display: flex; flex-direction: column; align-items: center;">Send OTP to Email</button>
-</form>
-</body>
+            .item1 {
+                margin-top: 30px;
+                margin-bottom: 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-size: 14px;
+            }
+
+            .item2 {
+                margin-top: 20px;
+                margin-bottom: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-wrap-style: auto;
+                font-weight: bold;
+                font-size: 14px;
+            }
+
+            .item button {
+                padding: 10px 20px;
+                background-color: #8328a7;
+                color: white;
+                border: none;
+                cursor: pointer;
+                box-shadow: #13132d 0px 10px 20px -10px;
+                border-radius: 5px;
+                align-items: center;
+                font-size: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Login</h1>
+        </div>
+
+        <div class="item">
+            <form method="POST">
+            {% csrf_token %}
+                <div class="item1">
+                    <input type="text" name="username" placeholder="Username" required style="padding: 8px; width: 200px; height: 25px;">
+                </div>
+                <div class="item2">
+                    <input type="password" name="password" placeholder="Password" required style="padding: 8px; width: 200px; height: 25px;">
+                </div>
+                <button type="submit" style="margin-top: 10px; width: 160px; height: 45px;">Send OTP to Email</button>
+            </form>
+        </div>
+    </body>
 </html>
